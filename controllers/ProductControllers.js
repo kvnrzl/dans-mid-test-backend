@@ -1,7 +1,7 @@
-import { get, set } from './redisCache.js';
-import axios from 'axios';
+import { get, set } from "../redis/redisCache.js";
+import axios from "axios";
 
-const redisKey = 'products';
+const redisKey = "products";
 
 export const listProducts = async (req, res) => {
   let productData;
@@ -15,7 +15,7 @@ export const listProducts = async (req, res) => {
       console.log(`Data set to Redis`);
       if (!response) {
         return res.status(404).send({
-          error: 'terdapat kesalahan data'
+          error: "terdapat kesalahan data",
         });
       }
     }
@@ -26,31 +26,30 @@ export const listProducts = async (req, res) => {
         if (productData) {
           productData = JSON.parse(productData);
           return res.status(200).send({
-            data: productData
+            data: productData,
           });
         }
       } catch (error) {
-        console.error('Error while retrieving data from Redis', error);
+        console.error("Error while retrieving data from Redis", error);
         return res.status(500).send({
-          error: 'Error while retrieving data from Redis'
+          error: "Error while retrieving data from Redis",
         });
       }
     }
   } catch (error) {
     if (error instanceof SyntaxError) {
-      console.error('Error while parsing JSON', error);
+      console.error("Error while parsing JSON", error);
       return res.status(500).send({
-        error: 'Error while parsing JSON'
+        error: "Error while parsing JSON",
       });
     }
 
-    console.error('Error while retrieving data from Redis', error);
+    console.error("Error while retrieving data from Redis", error);
     return res.status(500).send({
-      error: 'Error while retrieving data from Redis'
+      error: "Error while retrieving data from Redis",
     });
   }
   req.productData = productData;
-
 };
 
 export const detailProducts = async (req, res) => {
@@ -67,7 +66,7 @@ export const detailProducts = async (req, res) => {
       console.log(`Data set to Redis`);
       if (!response) {
         return res.status(404).send({
-          error: 'terdapat kesalahan data'
+          error: "terdapat kesalahan data",
         });
       }
     }
@@ -78,29 +77,28 @@ export const detailProducts = async (req, res) => {
         if (productData) {
           productData = JSON.parse(productData);
           return res.status(200).send({
-            data: productData
+            data: productData,
           });
         }
       } catch (error) {
-        console.error('Error while retrieving data from Redis', error);
+        console.error("Error while retrieving data from Redis", error);
         return res.status(500).send({
-          error: 'Error while retrieving data from Redis'
+          error: "Error while retrieving data from Redis",
         });
       }
     }
   } catch (error) {
     if (error instanceof SyntaxError) {
-      console.error('Error while parsing JSON', error);
+      console.error("Error while parsing JSON", error);
       return res.status(500).send({
-        error: 'Error while parsing JSON'
+        error: "Error while parsing JSON",
       });
     }
 
-    console.error('Error while retrieving data from Redis', error);
+    console.error("Error while retrieving data from Redis", error);
     return res.status(500).send({
-      error: 'Error while retrieving data from Redis'
+      error: "Error while retrieving data from Redis",
     });
   }
   req.productData = productData;
-
 };
