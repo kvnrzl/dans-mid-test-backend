@@ -4,8 +4,7 @@ import session from "express-session";
 import dotenv from "dotenv";
 import db from "./config/Database.js";
 import SequelizeStore from "connect-session-sequelize";
-import UserRoute from "./route/UserRoute.js";
-import CheckRoute from "./route/CheckRoute.js";
+import ProductRoute from "./route/ProductRoute.js";
 import AuthRoute from "./route/AuthRoute.js";
 dotenv.config();
 
@@ -40,8 +39,7 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(UserRoute);
-app.use(CheckRoute);
+app.use(ProductRoute);
 app.use(AuthRoute);
 
 // store.sync();

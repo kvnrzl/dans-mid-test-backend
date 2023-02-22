@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-const db = new Sequelize("dans_ojt", "root", "", {
+const db = new Sequelize("dans-mid-test-backend", "root", "", {
   host: "localhost",
   dialect: "mysql",
 });

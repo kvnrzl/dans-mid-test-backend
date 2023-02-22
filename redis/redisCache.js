@@ -13,7 +13,7 @@ function get(redis_key) {
         reject(err);
       } else {
         console.log("Success Redis Get", redis_key);
-        resolve(JSON.parse(reply));  
+        resolve(JSON.parse(reply));
       }
     });
   });
