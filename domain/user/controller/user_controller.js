@@ -38,7 +38,6 @@ const login = async (req, res) => {
       path: "/",
     });
     res.setHeader("Set-Cookie", setCookie);
-    console.log(setCookie, " <<<<<<< setCookie");
 
     return res.status(200).json({
       token,
