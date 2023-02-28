@@ -1,5 +1,6 @@
 const userService = require("../service/user_service");
 const cookie = require("cookie");
+require("dotenv").config();
 
 const register = async (req, res) => {
   try {
@@ -36,6 +37,7 @@ const login = async (req, res) => {
     const setCookie = cookie.serialize("token", token, {
       httpOnly: true,
       path: "/",
+      maxAge: process.env.COOKIE_DURATION, // 1 jam
     });
     res.setHeader("Set-Cookie", setCookie);
 
